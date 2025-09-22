@@ -4,7 +4,7 @@ I recommend integrating it with git so you can review its PRs (to maintain the h
 
 Setup instructions:
 1. Setup your environment on Azure AI Foundry
-2. git clone https://github.com/skabou/ai-edit
+2. git clone https://github.com/skabou/aiEdit
 3. Paste your endpoint in the appropriate spot in the ".env" file
 4. Install prerequisites with "pip install --pre -r requirements.txt"
 
