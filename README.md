@@ -3,8 +3,8 @@ aiEdit.py can be run via a CLI (Command Line Interface) but is intended to run o
 I recommend integrating it with git so you can review its PRs (to maintain the human element).
 
 Setup instructions:
-1. Setup your environment on Azure AI Foundry
-2. git clone https://github.com/skabou/aiEdit
+1. Setup your environment on [Azure AI Foundry](https://ai.azure.com/)
+2. Clone this repo: `git clone https://github.com/skabou/aiEdit`
 3. Paste your endpoint in the ".env" file, such as:
 `AZURE_PROJECT_ENDPOINT=<your-endpoint-goes-here>`
 4. Install prerequisites with `pip install --pre -r requirements.txt`
