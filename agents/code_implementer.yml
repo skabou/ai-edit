@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://aka.ms/ai-foundry-vsc/agent/1.0.0
+version: 1.0.0
+name: code_implementer
+id: ""
+description: Automated editor for Azure documentation, applies edits per agent feedback
+model:
+  id: "gpt-4.1"
+  options:
+    temperature: .01
+    top_p: 1
+instructions: |
+  Using the feedback from the previous agents, update the code sample to align with best practices for software development.
+  Ensure the code you provide is valid and will compile without errors.  If comments need to be provided, then ensure they are properly commented out within the coding language being used.
+  Do not provide feedback on the edits you made. Only edit the content and provide the new content. I do not want any pleasantries or formality outside of the edited content.
+  Do not write anything around the content such as "CONTENT START" and "CONTENT END", just write the raw content itself.
+tools:
+  - id: "microsoft_docs_search"
+    type: mcp
+    options:
+      server_url: https://learn.microsoft.com/api/mcp
+      allowed_tools:
+        - microsoft_docs_search
