@@ -7,7 +7,7 @@ Setup instructions:
 2. git clone https://github.com/skabou/aiEdit
 3. Paste your endpoint in the ".env" file, such as:
 `AZURE_PROJECT_ENDPOINT=<your-endpoint-goes-here>`
-4. Install prerequisites with "pip install --pre -r requirements.txt"
+4. Install prerequisites with `pip install --pre -r requirements.txt`
 
 
 Try out the samples:
