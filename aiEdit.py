@@ -261,7 +261,12 @@ def main():
     for pattern in args.filenames:
         matches = glob.glob(pattern)
         if matches:
-            expanded_files.extend(matches)
+            # Filter out directories from the matches
+            for match in matches:
+                if os.path.isfile(match):
+                    expanded_files.append(match)
+                elif os.path.isdir(match):
+                    logger.warning(f"Skipping directory: {match}")
         else:
             logger.warning(f"No files matched pattern: {pattern}")
     if not expanded_files:
