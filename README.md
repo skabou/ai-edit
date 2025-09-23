@@ -1,7 +1,7 @@
 # About
 Are you part of a small team that has a large set of documents to maintain?  aiEdit may be able to help!  Build custom agents in the agents folder to assist with reviewing and maintaining your documents.
 
-# Deploy
+# Setup
 aiEdit.py can be run via a CLI (Command Line Interface) but is ideal to run on a schedule or via an external trigger without requiring a human to sit and wait for a response.
 
 To maintain the human element, I recommend integrating it with GitHub so you can sit back and review the PRs.
@@ -15,17 +15,15 @@ Setup instructions:
 `AZURE_PROJECT_ENDPOINT=<your-endpoint-goes-here>`
 4. Install prerequisites with `pip install --pre -r requirements.txt`
 
+# Samples
+Below are 2 sample use cases to try out.
 
-
-
-Try out the samples:
-
-# Content Review
+## Content Review
 `python aiEdit.py --agents=typocheck,content_expert,azure_expert --summarizer=summarizer --implementer=implementer --verbose=Y example-content.md`
 
 The first sample asks for reviews (in parallel) from the TypoCheck agent, Content Expert agent, and Azure Expert agent.  Once all 3 agents have responded, the Summarizer agent will summarize and attempt to validate their feedback.   The implementer agent will take this feedback and make changes to the file.  The flag verbose=Y means we want to see what each agent is "thinking."
 
-# Code Review
+## Code Review
 `python aiEdit.py --agents=code_expert,security_expert --summarizer=summarizer --implementer=code_implementer --verbose=Y example-code.py`
 
 The second sample asks for reviews (in parallel) from the Code Expert agent, and Security Expert agent.  Once both agents have responded, the Summarizer agent will summarize and attempt to validate their feedback.   The implementer agent will take this feedback and make changes to the file.  The flag verbose=Y means we want to see what each agent is "thinking."
