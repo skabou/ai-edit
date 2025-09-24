@@ -19,11 +19,11 @@ Setup instructions:
 Below are 2 sample use cases to try out.
 
 ## Content Review
-`python aiEdit.py --agents=typocheck,content_expert,azure_expert --summarizer=summarizer --implementer=implementer --verbose=Y example-content.md`
+`python aiEdit.py --agents=typocheck,content_expert,azure_expert --summarizer=summarizer --implementer=implementer --verbose=Y examples/example-content.md`
 
 The first sample asks for reviews (in parallel) from the TypoCheck agent, Content Expert agent, and Azure Expert agent.  Once all 3 agents have responded, the Summarizer agent will summarize and attempt to validate their feedback.   The implementer agent will take this feedback and make changes to the file.  The flag verbose=Y means we want to see what each agent is "thinking."
 
 ## Code Review
-`python aiEdit.py --agents=code_expert,security_expert --summarizer=summarizer --implementer=code_implementer --verbose=Y example-code.py`
+`python aiEdit.py --agents=code_expert,security_expert --summarizer=summarizer --implementer=code_implementer --verbose=Y examples/example-code.py`
 
-The second sample asks for reviews (in parallel) from the Code Expert agent, and Security Expert agent.  Once both agents have responded, the Summarizer agent will summarize and attempt to validate their feedback.   The implementer agent will take this feedback and make changes to the file.  The flag verbose=Y means we want to see what each agent is "thinking."
+The second sample asks for reviews (in parallel) from the Code Expert agent, and Security Expert agent.  Once both agents have responded, the Summarizer agent will summarize and attempt to validate their feedback.   The implementer ("code_implementer") agent will take this feedback and make changes to the file.  The flag verbose=Y means we want to see what each agent is "thinking."

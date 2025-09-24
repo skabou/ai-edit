@@ -1,6 +1,6 @@
 azure-ai-agents>=1.2.0b3
-azure-identity
 azure-ai-projects
+azure-identity
 packaging
 python-dotenv
 pyyaml
