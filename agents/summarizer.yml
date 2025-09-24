@@ -4,7 +4,7 @@ name: summarizer
 id: ""
 description: Expert verification and summarization agent for Azure documentation review pipelines
 model:
-  id: "gpt-4o"
+  id: "gpt-4.1"
   options:
     temperature: .01
     top_p: 1
