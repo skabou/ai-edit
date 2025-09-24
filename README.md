@@ -1,7 +1,7 @@
 
 # aiEdit
 
-aiEdit is a Python-based tool for automating document and code reviews using custom agents. It is designed for teams managing large sets of content, enabling scalable review and maintenance workflows. Agents are defined in the `agents` folder and can be customized for your needs and integrated with other workflows. Example agents are provided for demonstration purposes and should not be used in production without review.
+aiEdit is a Python-based tool for automating document and code reviews using custom agents. It is designed for teams managing large sets of content, enabling scalable review and maintenance workflows. Agents are defined in the `agents` folder and can be customized for your needs and integrated with other workflows.
 
 ## Prerequisites
 
@@ -34,7 +34,7 @@ aiEdit is a Python-based tool for automating document and code reviews using cus
 
 ## Example Usage
 
-aiEdit can be run via the CLI and is designed to be easily integrated with scheduled tasks or external triggers.  The below examples can be run on the provided example content.
+aiEdit can be run via CLI and is designed to be easily integrated with scheduled tasks or external triggers.  The below examples can be run on the provided example content.
 
 
 ### Content Review
@@ -51,10 +51,10 @@ python aiEdit.py --agents=code_expert,security_expert --summarizer=summarizer --
 
 ### Arguments
 
-- `--agents`: Comma-separated list of agent names (required)
+- `--agents`: Comma-separated list of worker agent names (required)
 - `--summarizer`: Agent name to summarize findings (optional)
 - `--implementer`: Agent name to implement changes (optional)
-- `--verbose`: Display agent feedback (`Y`/`N`, default: `N`)
+- `--verbose`: Output agent feedback (`Y`/`N`, default: `N`)
 - `filenames`: One or more files to process (supports wildcards)
 
 ## Agent Configuration
@@ -69,7 +69,7 @@ Refer to the example YAML files for structure. Invalid or missing fields may cau
 
 ## Error Handling
 
-aiEdit uses robust error handling and logging. If a required file, environment variable, or agent configuration is missing or invalid, the script will log an error and exit. All errors and warnings are logged to the console with timestamps and severity levels.
+aiEdit uses robust error handling and logging. If a required file, environment variable, or agent configuration is missing or invalid, the script will log an error and exit. All errors and warnings are logged with timestamps and severity levels.
 
 ## Logging
 
@@ -77,4 +77,4 @@ Logging is configured to display timestamps, log levels, and messages. Noisy log
 
 ## Contributing
 
-Contributions are welcome! Please review the code and agent configurations for security and compliance before deploying in production.
+Contributions are welcome.
