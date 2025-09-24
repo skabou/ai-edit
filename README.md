@@ -1,29 +1,80 @@
-# Overview
-Are you part of a small team that has a large set of documents to maintain?  aiEdit may be able to help!  Build custom agents in the agents folder to assist with reviewing and maintaining your documents.  Agents in the agents folder are strictly for example purposes and should not be relied upon for production use.
 
-# Setup
-aiEdit.py can be run via a CLI (Command Line Interface) but is ideal to run on a schedule or via an external trigger without requiring a human to sit and wait for a response.
+# aiEdit
 
-To maintain the human element, I recommend integrating it with GitHub so you can sit back and review the PRs.
+aiEdit is a Python-based tool for automating document and code reviews using custom agents. It is designed for teams managing large sets of content, enabling scalable review and maintenance workflows. Agents are defined in the `agents` folder and can be customized for your needs and integrated with other workflows. Example agents are provided for demonstration purposes and should not be used in production without review.
 
-Note: Some of the example agents are configured to use an MCP server.  [This feature is currently in preview](https://learn.microsoft.com/azure/ai-foundry/agents/how-to/tools/model-context-protocol).  To utilize this feature, your AI Foundry infrastructure needs to be in one of the supported regions: westus, westus2, uaenorth, southindia, or switzerlandnorth.  Alternatively, if you'd like to remove the use of the MCP server, then modify the agent's tools line as follows: `tools: []`
+## Prerequisites
 
-Setup instructions:
-1. Setup your environment on [Azure AI Foundry](https://ai.azure.com/)
-2. Clone this repo: `git clone https://github.com/skabou/aiEdit`
-3. Paste your endpoint in the ".env" file, such as:
-`AZURE_PROJECT_ENDPOINT=<your-endpoint-goes-here>`
-4. Install prerequisites with `pip install --pre -r requirements.txt`
+- Python 3.8 or later
+- Azure AI Foundry endpoint ([Get started](https://ai.azure.com/))
+- [GitHub CLI](https://cli.github.com/) (for PR automation)
 
-# Samples
-Below are 2 sample use cases to try out.
 
-## Content Review
-`python aiEdit.py --agents=typocheck,content_expert,azure_expert --summarizer=summarizer --implementer=implementer --verbose=Y examples/example-content.md`
+## Setup
 
-The first sample asks for reviews (in parallel) from the TypoCheck agent, Content Expert agent, and Azure Expert agent.  Once all 3 agents have responded, the Summarizer agent will summarize and attempt to validate their feedback.   The implementer agent will take this feedback and make changes to the file.  The flag verbose=Y means we want to see what each agent is "thinking."
+1. Clone this repository:
+	```shell
+	git clone https://github.com/skabou/aiEdit
+	cd aiEdit
+	```
+> **Note:** A preview version of the [Python SDK](https://learn.microsoft.com/en-us/azure/ai-foundry/agents/how-to/tools/model-context-protocol-samples?pivots=python) is needed to use MCP servers.
 
-## Code Review
-`python aiEdit.py --agents=code_expert,security_expert --summarizer=summarizer --implementer=code_implementer --verbose=Y examples/example-code.py`
+2. Install dependencies:
+    ```shell
+    pip install --pre -r requirements.txt
+    ```
 
-The second sample asks for reviews (in parallel) from the Code Expert agent, and Security Expert agent.  Once both agents have responded, the Summarizer agent will summarize and attempt to validate their feedback.   The implementer ("code_implementer") agent will take this feedback and make changes to the file.  The flag verbose=Y means we want to see what each agent is "thinking."
+3. Configure environment variables:
+	- Create a `.env` file in the project root.
+	- Add your Azure endpoint:
+	  ```env
+	  AZURE_PROJECT_ENDPOINT=<your-endpoint-goes-here>
+	  ```
+4. (Optional) Review and customize agent YAML files in the `agents` folder.
+
+## Example Usage
+
+aiEdit can be run via the CLI and is designed to be easily integrated with scheduled tasks or external triggers.  The below examples can be run on the provided example content.
+
+
+### Content Review
+
+```shell
+python aiEdit.py --agents=typocheck,content_expert,azure_expert --summarizer=summarizer --implementer=implementer --verbose=Y examples/*.md
+```
+
+### Code Review
+
+```shell
+python aiEdit.py --agents=code_expert,security_expert --summarizer=summarizer --implementer=code_implementer --verbose=Y examples/*.py
+```
+
+### Arguments
+
+- `--agents`: Comma-separated list of agent names (required)
+- `--summarizer`: Agent name to summarize findings (optional)
+- `--implementer`: Agent name to implement changes (optional)
+- `--verbose`: Display agent feedback (`Y`/`N`, default: `N`)
+- `filenames`: One or more files to process (supports wildcards)
+
+## Agent Configuration
+
+Agents are defined in YAML files in the `agents` directory. Each agent must specify:
+- `model.id`: Model deployment name
+- `model.options.temperature` and `model.options.top_p`: Model parameters
+- `instructions`: System prompt for the agent
+- `tools`: MCP server configuration (Optional)
+
+Refer to the example YAML files for structure. Invalid or missing fields may cause the script to exit with an error.
+
+## Error Handling
+
+aiEdit uses robust error handling and logging. If a required file, environment variable, or agent configuration is missing or invalid, the script will log an error and exit. All errors and warnings are logged to the console with timestamps and severity levels.
+
+## Logging
+
+Logging is configured to display timestamps, log levels, and messages. Noisy logs from Azure SDK and HTTP libraries are suppressed for clarity. Verbose mode (`--verbose=Y`) displays agent feedback in detail.
+
+## Contributing
+
+Contributions are welcome! Please review the code and agent configurations for security and compliance before deploying in production.
