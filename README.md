@@ -1,5 +1,5 @@
-# About
-Are you part of a small team that has a large set of documents to maintain?  aiEdit may be able to help!  Build custom agents in the agents folder to assist with reviewing and maintaining your documents.
+# Overview
+Are you part of a small team that has a large set of documents to maintain?  aiEdit may be able to help!  Build custom agents in the agents folder to assist with reviewing and maintaining your documents.  Agents in the agents folder are strictly for example purposes and should not be relied upon for production use.
 
 # Setup
 aiEdit.py can be run via a CLI (Command Line Interface) but is ideal to run on a schedule or via an external trigger without requiring a human to sit and wait for a response.
