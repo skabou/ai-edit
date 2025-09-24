@@ -26,7 +26,7 @@ aiEdit is a Python-based tool for automating document and code reviews using cus
 
 3. Configure environment variables:
 	- Create a `.env` file in the project root.
-	- Add your Azure endpoint:
+	- Add your Azure AI Foundry endpoint:
 	  ```env
 	  AZURE_PROJECT_ENDPOINT=<your-endpoint-goes-here>
 	  ```
